@@ -1,0 +1,29 @@
+@import './sass/_variables'
+    
+html 
+    box-sizing: border-box
+    min-height: 100%
+    font-family: 'Roboto', sans-serif
+
+*, *:before, *:after 
+    margin: 0
+    padding: 0
+    box-sizing: inherit
+    
+.container 
+    max-width: 1200px
+    padding: 0 15px
+    margin: 0 auto
+
+.row 
+    display: flex 
+    &--space-b 
+        justify-content: space-between
+
+.btn 
+    display: inline-block
+    padding: 10px 15px 
+    background-color: #fff
+    cursor: pointer
+    transition: 0.3s ease
+    
