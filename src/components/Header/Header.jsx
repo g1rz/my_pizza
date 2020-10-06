@@ -1,4 +1,5 @@
 import React from 'react';
+import CartButton from '../CartButton/CartButton';
 import './Header.sass';
 
 const Header = () => {
@@ -9,14 +10,7 @@ const Header = () => {
                     <a href="/" className="logo">
                         <span>My</span> pizza
                     </a>
-
-                    <div className="cart-btn-wrap">
-                        <button className="cart-btn btn">
-                            <span>Корзина</span>
-                            <span className="cart-btn__sep"></span>
-                            <span className="cart-btn__count">2</span>
-                        </button>
-                    </div>
+                    <CartButton />
                 </div>
             </div>
         </header>

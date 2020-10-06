@@ -1,0 +1,19 @@
+@import '../../sass/_variables'
+.counter 
+    display: flex
+    align-items: center 
+    justify-content: space-between
+    width: 100px
+    border: 1px solid rgb(211, 213, 222)
+    border-radius: 10px
+    overflow: hidden
+    &__btn 
+        padding: 10px
+        outline: none
+        border: none
+        &:hover 
+            .counter__btn-icon 
+                fill: $orange
+    &__btn-icon
+        fill: #454B54
+        transition: 0.3s ease
