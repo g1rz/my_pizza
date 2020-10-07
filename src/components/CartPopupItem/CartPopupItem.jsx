@@ -1,25 +1,23 @@
 import React from 'react';
-import Button from '../Button';
 
 import Counter from '../Counter/Counter';
 
 import './CartPopupItem.sass';
 
-const CartPopupItem = () => {
+const CartPopupItem = ({image, name, size, type, price, count}) => {
     return (
         <div className="cart-p-item">
             <div className="cart-p-item__image">
                 <img
-                    src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg"
-                    alt=""
-                />
+                    src={image}
+                    alt={name}/>
             </div>
             <div className="cart-p-item__body">
-                <p className="cart-p-item__title">Крэйзи пепперони</p>
-                <p className="cart-p-item__desc">Средняя 30 см, традиционное тесто</p>
+                <p className="cart-p-item__title">{name}</p>
+                <p className="cart-p-item__desc">{size}, {type}</p>
                 <div className="cart-p-item__row">
-                    <Counter count={1} />
-                    <div className="cart-p-item__price">1000 р.</div>
+                    <Counter count={count} />
+                    <div className="cart-p-item__price">{price} р.</div>
                     <svg
                         height="512pt"
                         viewBox="0 0 512 512"
