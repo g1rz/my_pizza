@@ -1,0 +1,22 @@
+@import '../../sass/_variables'
+
+.categories
+    display: flex 
+    list-style: none
+    &__item
+        margin-right: 10px
+        margin-bottom: 10px
+    &__btn
+        padding: 5px 15px 
+        border: 1px solid #000
+        border-radius: 5px
+        cursor: pointer
+        outline: none
+        &:hover 
+            color: $orange
+            border-color: $orange
+        &.active 
+            color: #fff
+            background-color: $orange
+            border-color: $orange
+            

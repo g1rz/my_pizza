@@ -1,5 +1,6 @@
 import React from 'react';
 import CartButton from '../CartButton/CartButton';
+
 import './Header.sass';
 
 const Header = () => {
