@@ -16,7 +16,12 @@ function App() {
             <Header />
             <div className="container">
                 <Categories activeCategory={activeCategory} onSelectCategory={onSelectCategory} />
-                <div className="pizza-list row row--wrap">
+                <div className="pizza-list row row--wrap ">
+                    <ProductBlock />
+                    <ProductBlock />
+                    <ProductBlock />
+                    <ProductBlock />
+                    <ProductBlock />
                     <ProductBlock />
                 </div>
             </div>

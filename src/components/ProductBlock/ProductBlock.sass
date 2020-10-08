@@ -1,7 +1,14 @@
 @import '../../sass/_variables'
     
+.product-wrap 
+    width: 25%
+    padding: 0 15px
+    margin-bottom: 30px
+
 .product 
-    max-width: 270px
+    max-width: 240px
+    margin: 0 auto
+    
     // border: 1px solid red
     &__img
         display: block
@@ -29,3 +36,15 @@
         &:hover 
             background-color: $orange 
             color: #fff
+
+@media (max-width: 991px)
+    .product-wrap 
+        width: 33.33%
+
+@media (max-width: 768px)
+    .product-wrap 
+        width: 50%
+
+@media (max-width: 540px)
+    .product-wrap 
+        width: 100%
