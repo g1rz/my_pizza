@@ -17,9 +17,9 @@ const ProductBlock = () => {
             <p className="product__desc">
                 Ветчина, шампиньоны, увеличенная порция моцареллы, томатный соус
             </p>
-            <div className="product__row row row--space-b">
+            <div className="product__row row row--space-b row--align-c">
                 <div className="product__price-start">от 345 ₽</div>
-                <Button className="product__btn">Добавить</Button>
+                <Button className="product__btn">Выбрать</Button>
             </div>
         </div>
     );
