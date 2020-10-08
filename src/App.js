@@ -3,6 +3,7 @@ import './App.sass';
 import Header from './components/Header/Header';
 import Categories from './components/Categories/Categories';
 import ProductBlock from './components/ProductBlock/ProductBlock';
+import ProductPopup from './components/ProductPopup/ProductPopup';
 
 function App() {
     const [activeCategory, setActiveCategory] = React.useState('all');
@@ -25,6 +26,7 @@ function App() {
                     <ProductBlock />
                 </div>
             </div>
+            <ProductPopup />
         </div>
     );
 }
