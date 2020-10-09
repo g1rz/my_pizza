@@ -12,7 +12,11 @@ const ProductPopup = () => {
                         className="popup__image"
                     />
                 </div>
-                <div className="popup__body"></div>
+                <div className="popup__body">
+                    <p className="popup__title">Крэйзи пепперони</p>
+                    <p className="popup__desc">Средняя 30 см, традиционное тесто, 410 г</p>
+                    <p className="popup__contain">Ветчина, шампиньоны, увеличенная порция моцареллы, томатный соус</p>
+                </div>
             </div>
         </div>
     );
