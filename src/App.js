@@ -7,6 +7,7 @@ import ProductPopup from './components/ProductPopup/ProductPopup';
 
 function App() {
     const [activeCategory, setActiveCategory] = React.useState('all');
+    const [isShowPopup, setIsShowPopup] = React.useState(false);
 
     const onSelectCategory = (category) => {
         setActiveCategory(category);
@@ -26,7 +27,7 @@ function App() {
                     <ProductBlock />
                 </div>
             </div>
-            <ProductPopup />
+            {isShowPopup && <ProductPopup />}
         </div>
     );
 }

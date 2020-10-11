@@ -3,7 +3,7 @@ import Button from '../Button';
 
 import './ProductBlock.sass';
 
-const ProductBlock = () => {
+const ProductBlock = ({ id, imageUrl, name, content, price }) => {
     return (
         <div className="product-wrap">
             <div className="product">
