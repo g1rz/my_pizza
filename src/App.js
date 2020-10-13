@@ -18,7 +18,17 @@ function App() {
 
     const onSelectCategory = (category) => {
         setActiveCategory(category);
+        console.log(category);
     };
+
+    const filterCategory = (items, category) => {
+        if (category === 'all') return items;
+        return items.filter((item) => item.category === category);
+    };
+
+    const visibleItems = filterCategory(items, activeCategory);
+
+    console.log(items);
 
     return (
         <div className="App">
@@ -26,7 +36,8 @@ function App() {
             <div className="container">
                 <Categories activeCategory={activeCategory} onSelectCategory={onSelectCategory} />
                 <div className="pizza-list row row--wrap ">
-                    {items && items.map((item) => <ProductBlock key={item.id} {...item} />)}
+                    {visibleItems &&
+                        visibleItems.map((item) => <ProductBlock key={item.id} {...item} />)}
                 </div>
             </div>
             {isShowPopup && <ProductPopup />}

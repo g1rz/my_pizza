@@ -59,7 +59,7 @@
                     "price": 150
                 }
             ],
-            "category": 0
+            "category": "meat"
         },
         {
             "id": 1,
@@ -120,7 +120,7 @@
                     "price": 650
                 }
             ],
-            "category": 1
+            "category": "vegetarian"
         },
         {
             "id": 2,
@@ -181,7 +181,7 @@
                     "price": 650
                 }
             ],
-            "category": 1
+            "category": "vegetarian"
         },
         {
             "id": 3,
@@ -242,7 +242,7 @@
                     "price": 650
                 }
             ],
-            "category": 2
+            "category": "grill"
         },
         {
             "id": 4,
@@ -303,7 +303,7 @@
                     "price": 650
                 }
             ],
-            "category": 3
+            "category": "grill"
         },
         {
             "id": 5,
@@ -364,7 +364,7 @@
                     "price": 650
                 }
             ],
-            "category": 2
+            "category": "vegetarian"
         },
         {
             "id": 6,
@@ -425,7 +425,7 @@
                     "price": 650
                 }
             ],
-            "category": 1
+            "category": "meat"
         },
         {
             "id": 7,
@@ -486,7 +486,7 @@
                     "price": 650
                 }
             ],
-            "category": 4
+            "category": "close"
         },
         {
             "id": 8,
@@ -547,7 +547,7 @@
                     "price": 650
                 }
             ],
-            "category": 5
+            "category": "close"
         },
         {
             "id": 9,
@@ -608,7 +608,7 @@
                     "price": 650
                 }
             ],
-            "category": 5
+            "category": "vegetarian"
         }
     ]
 }
