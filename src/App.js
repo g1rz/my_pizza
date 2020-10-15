@@ -10,6 +10,7 @@ import LoadingBlock from './components/LoadingBlock/LoadingBlock';
 function App() {
     const [activeCategory, setActiveCategory] = React.useState('all');
     const [isShowPopup, setIsShowPopup] = React.useState(false);
+    const [openProduct, setOpenProduct] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
 
     const [items, setItems] = React.useState([]);
@@ -32,11 +33,22 @@ function App() {
         return items.filter((item) => item.category === category);
     };
 
+    const onOpenProduct = (id) => {
+        setIsShowPopup(true);
+        setOpenProduct(id);
+    };
+
+    const onCloseProduct = () => {
+        setIsShowPopup(false);
+    };
+
     const filterItems = filterCategory(items, activeCategory);
 
     const visibleItems = isLoading
-        ? filterItems.map((item) => <ProductBlock key={item.id} {...item} />)
-        : new Array(10).fill(<LoadingBlock />);
+        ? filterItems.map((item) => (
+              <ProductBlock key={item.id} {...item} onOpenProduct={onOpenProduct} />
+          ))
+        : new Array(10).fill(0).map((_, index) => <LoadingBlock key={index} />);
 
     return (
         <div className="App">
@@ -45,7 +57,12 @@ function App() {
                 <Categories activeCategory={activeCategory} onSelectCategory={onSelectCategory} />
                 <div className="pizza-list row row--wrap ">{visibleItems && visibleItems}</div>
             </div>
-            {isShowPopup && <ProductPopup />}
+            {isShowPopup && (
+                <ProductPopup
+                    item={items.filter((item) => item.id === openProduct)}
+                    onCloseProduct={onCloseProduct}
+                />
+            )}
         </div>
     );
 }
