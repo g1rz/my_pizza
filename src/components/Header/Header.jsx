@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
+
 import CartButton from '../CartButton/CartButton';
 
 import './Header.sass';
@@ -8,10 +10,13 @@ const Header = () => {
         <header className="header">
             <div className="container">
                 <div className="row row--space-b">
-                    <a href="/" className="logo">
+                    <Link to="/" className="logo">
                         <span>My</span> pizza
-                    </a>
-                    <CartButton />
+                    </Link>
+
+                    <Route exact path="/">
+                        <CartButton />
+                    </Route>
                 </div>
             </div>
         </header>
