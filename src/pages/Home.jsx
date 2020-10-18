@@ -1,26 +1,26 @@
 import React from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import Categories from '../components/Categories/Categories';
 import ProductBlock from '../components/ProductBlock/ProductBlock';
 import ProductPopup from '../components/ProductPopup/ProductPopup';
 import LoadingBlock from '../components/LoadingBlock/LoadingBlock';
 import { useLocation, useHistory } from 'react-router-dom';
 
-const Home = () => {
-    const [activeCategory, setActiveCategory] = React.useState('all');
-    const [isLoading, setIsLoading] = React.useState(false);
+import { fetchProducts } from '../redux/actions/products';
 
-    const [items, setItems] = React.useState([]);
+const Home = () => {
+    const dispatch = useDispatch();
+    const [activeCategory, setActiveCategory] = React.useState('all');
+
+    const items = useSelector(({ products }) => products.items);
+    const isLoaded = useSelector(({ products }) => products.isLoaded);
 
     let query = new URLSearchParams(useLocation().search);
     let history = useHistory();
 
     React.useEffect(() => {
-        setIsLoading(false);
-        axios.get('http://localhost:3001/pizzas').then(({ data }) => {
-            setItems(data);
-            setIsLoading(true);
-        });
+        dispatch(fetchProducts());
     }, []);
 
     const onSelectCategory = (category) => {
@@ -38,7 +38,7 @@ const Home = () => {
 
     const filterItems = filterCategory(items, activeCategory);
 
-    const visibleItems = isLoading
+    const visibleItems = isLoaded
         ? filterItems.map((item) => <ProductBlock key={item.id} {...item} />)
         : new Array(10).fill(0).map((_, index) => <LoadingBlock key={index} />);
 
