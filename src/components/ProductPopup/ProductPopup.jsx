@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from '../Button';
 import './ProductPopup.sass';
 
-const ProductPopup = ({ itemID, onCloseProduct }) => {
+const ProductPopup = ({ itemID, onCloseProduct, onAddProduct }) => {
     const [isLoading, setIsLoading] = React.useState(false);
     const availableSizes = ['Маленькая', 'Средняя', 'Большая'];
 
@@ -29,6 +29,21 @@ const ProductPopup = ({ itemID, onCloseProduct }) => {
         if (!path.includes(popupRef.current)) {
             onCloseProduct();
         }
+    };
+
+    const onClickAddProduct = (item, product, type) => {
+        let productCart = {
+            id: item.id + '_' + product.size.code + '_' + type.code,
+            imageUrl: item.imageUrl,
+            name: item.name,
+            contain: item.contain,
+            size: product.size,
+            type: type,
+            price: product.price,
+            count: 1,
+        };
+        onAddProduct(productCart);
+        onCloseProduct();
     };
 
     React.useEffect(() => {
@@ -96,7 +111,9 @@ const ProductPopup = ({ itemID, onCloseProduct }) => {
                                 })}
                             </ul>
 
-                            <Button className="popup__buy">
+                            <Button
+                                className="popup__buy"
+                                onClick={() => onClickAddProduct(item, product, type)}>
                                 В корзину за{' '}
                                 <span className="popup__buy-price">{product.price}</span> ₽
                             </Button>
