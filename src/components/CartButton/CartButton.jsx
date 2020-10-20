@@ -1,45 +1,18 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
+import { plusProduct, minusProduct, deleteProduct } from '../../redux/actions/cart';
 import CartPopup from '../CartPopup/CartPopup';
 
 import './CartButton.sass';
 
-const pizzas = [
-    {
-        id: 1,
-        image:
-            'https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg',
-        name: 'Крэйзи пепперони',
-        size: 'Средняя 30 см',
-        type: 'традиционное тесто',
-        price: 700,
-        count: 1,
-    },
-    {
-        id: 2,
-        image:
-            'https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg',
-        name: 'Крэйзи пепперони',
-        size: 'Средняя 30 см',
-        type: 'традиционное тесто',
-        price: 400,
-        count: 1,
-    },
-    {
-        id: 3,
-        image:
-            'https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg',
-        name: 'Крэйзи пепперони',
-        size: 'Средняя 30 см',
-        type: 'традиционное тесто',
-        price: 1000,
-        count: 1,
-    },
-];
-
 const CartButton = () => {
+    const dispatch = useDispatch();
     const [isVisibleCart, setIsVisibleCart] = React.useState(false);
+    const itemsCart = useSelector(({ cart }) => cart.items);
+    const totalCount = useSelector(({ cart }) => cart.totalCount);
+    const totalPrice = useSelector(({ cart }) => cart.totalPrice);
 
     const onMouseEnter = () => {
         setIsVisibleCart(true);
@@ -47,6 +20,22 @@ const CartButton = () => {
 
     const onMouseLeave = () => {
         setIsVisibleCart(false);
+    };
+
+    const onClickPlusProduct = (id) => {
+        dispatch(plusProduct(id));
+    };
+    const onClickMinusProduct = (id) => {
+        const curentCount = itemsCart.find((item) => item.id === id).count;
+        if (curentCount === 1) {
+            dispatch(deleteProduct(id));
+        } else {
+            dispatch(minusProduct(id));
+        }
+    };
+
+    const onClickDeleteProduct = (id) => {
+        dispatch(deleteProduct(id));
     };
 
     return (
@@ -58,10 +47,18 @@ const CartButton = () => {
                 <Button className="cart-btn">
                     <span>Корзина</span>
                     <span className="cart-btn__sep"></span>
-                    <span className="cart-btn__count">{pizzas.length}</span>
+                    <span className="cart-btn__count">{totalCount}</span>
                 </Button>
             </Link>
-            {isVisibleCart && <CartPopup pizzas={pizzas} />}
+            {isVisibleCart && (
+                <CartPopup
+                    products={itemsCart}
+                    totalPrice={totalPrice}
+                    onClickPlusProduct={onClickPlusProduct}
+                    onClickMinusProduct={onClickMinusProduct}
+                    onClickDeleteProduct={onClickDeleteProduct}
+                />
+            )}
         </div>
     );
 };

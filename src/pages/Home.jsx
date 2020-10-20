@@ -40,13 +40,10 @@ const Home = () => {
 
     const handleAddProductToCart = (obj) => {
         if (itemsCart.find((item) => item.id === obj.id)) {
-            console.log('uzhe est` takoi tovar');
             dispatch(plusProduct(obj.id));
         } else {
             dispatch(addProduct(obj));
         }
-        console.log(obj);
-        console.log(itemsCart);
     };
 
     const filterItems = filterCategory(items, activeCategory);

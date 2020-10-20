@@ -51,6 +51,8 @@ const cart = (state = initialState, action) => {
                         ...item,
                         count: item.count - 1,
                     };
+                } else {
+                    return item;
                 }
             });
             return {
