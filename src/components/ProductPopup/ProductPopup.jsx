@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import * as firebase from 'firebase';
 import classNames from 'classnames';
 import Button from '../Button';
 import './ProductPopup.sass';
@@ -50,10 +50,17 @@ const ProductPopup = ({ itemID, onCloseProduct, onAddProduct }) => {
         document.body.addEventListener('click', handleOutsideclick);
 
         setIsLoading(false);
-        axios.get(`http://localhost:3001/pizzas/${itemID}`).then(({ data }) => {
-            setItem(data);
-            setProduct(data.products[0]);
-            setType(data.products[0].types[0]);
+        // axios.get(`http://localhost:3001/pizzas/${itemID}`).then(({ data }) => {
+        //     setItem(data);
+        //     setProduct(data.products[0]);
+        //     setType(data.products[0].types[0]);
+        //     setIsLoading(true);
+        // });
+        var database = firebase.database();
+        database.ref(`pizzas/${itemID}`).on('value', (snapshot) => {
+            setItem(snapshot.val());
+            setProduct(snapshot.val().products[0]);
+            setType(snapshot.val().products[0].types[0]);
             setIsLoading(true);
         });
         return () => document.body.removeEventListener('click', handleOutsideclick);

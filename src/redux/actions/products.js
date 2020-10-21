@@ -1,9 +1,11 @@
-import axios from 'axios';
+import * as firebase from 'firebase';
 
 export const fetchProducts = () => (dispatch) => {
     dispatch(setLoaded(false));
-    axios.get('http://localhost:3001/pizzas').then(({ data }) => {
-        dispatch(setProducts(data));
+
+    var database = firebase.database();
+    database.ref('pizzas').on('value', (snapshot) => {
+        dispatch(setProducts(snapshot.val()));
     });
 };
 

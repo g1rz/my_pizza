@@ -6,6 +6,12 @@ import store from './redux/store';
 import './index.sass';
 import App from './App';
 
+import * as firebase from 'firebase';
+
+var firebaseConfig = {};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 ReactDOM.render(
     <Router>
         <React.StrictMode>
